@@ -1,6 +1,3 @@
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.Date;
 
 /**
@@ -22,282 +19,175 @@ public class StudentGroup implements StudentArrayOperation {
 	 * DO NOT remove or change this constructor, it will be used during task check
 	 * @param length
 	 */
-	public StudentGroup(int length) 
-	{
+	public StudentGroup(int length) {
 		this.students = new Student[length];
 	}
 
-	//@Override
-	public Student[] getStudents() 
-	{
+	@Override
+	public Student[] getStudents() {
+		// Add your implementation here
 		return students;
 	}
 
-	//@Override
-	public void setStudents(Student[] students) 
-	{
-		this.students=students;
+	@Override
+	public void setStudents(Student[] students) {
+		// Add your implementation here
+                this.students=students;
 	}
 
-	//@Override
-	public Student getStudent(int index) 
-	{
-		
+	@Override
+	public Student getStudent(int index) {
+		// Add your implementation here
 		return students[index];
 	}
 
-	//@Override
-	public void setStudent(Student student, int index) 
-	{
+	@Override
+	public void setStudent(Student student, int index) {
+		// Add your implementation here
 		students[index]=student;
 	}
 
-	//@Override
-	public void addFirst(Student student) 
-	{
-		this.students = new Student[this.students.length+1];
-		for( int i=this.students.length;i>0;i--)
-		{
-			students[i]=students[i-1];
+	@Override
+	public void addFirst(Student student) {
+		// Add your implementation here
+		int i=0;
+		students[0]=student;
+		int len =students.length;
+		Student[] s= new Student[len+1];
+		s[0]=student;
+		for(i=1;i<=len;i++){
+		s[i]=students[i];	
 		}
-		students[0]=student;		
-		
+		students=s;
 	}
 
-	//@Override
-	public void addLast(Student student) 
-	{
+	@Override
+	public void addLast(Student student) {
+		// Add your implementation here
 		this.students = new Student[this.students.length+1];
-		
 		students[this.students.length-1]=student;
 	}
 
-	//@Override
-	public void add(Student student, int index) 
-	{
+	@Override
+	public void add(Student student, int index) {
+		// Add your implementation here
 		this.students = new Student[this.students.length+1];
-		for( int i=this.students.length;i>index;i--)
-		{
+		for(int i=this.students.length;i>index;i--){
 			students[i]=students[i-1];
 		}
-		students[index-1]=student;		
-		
+		students[index-1]=student;
 	}
 
-	//@Override
-	public void remove(int index) 
-	{
+	@Override
+	public void remove(int index) {
+		// Add your implementation here
 		students[index]=null;
-		for( int i=index;i<this.students.length;i++)
-		{
-			students[i]=students[i+1];
-		}
-		students[this.students.length-1]=null;
-		
-		
-	}
-
-	//@Override
-	public void remove(Student student)
-	{
-		for( int i=0;i<this.students.length;i++)
-		{
-			if(students[i].getFullName()==student.getFullName())
-			{
-				students[i]=null;
-				
-				for( int j=i;j<this.students.length;j++)
-				{
-					students[j]=students[j+1];
-					
-				}
-				students[this.students.length]=null;
-				students[this.students.length+1]=null;
-				return;
-				
-			}
-		}
-	}
-
-	//@Override
-	public void removeFromIndex(int index) 
-	{
-		students[index]=null;
-		for( int i=index;i<this.students.length;i++)
-		{
-			students[i]=students[i+1];
-		}
-		students[this.students.length-1]=null;
-		
-	}
-
-	//@Override
-	public void removeFromElement(Student student) 
-	{
-		for( int i=0;i<this.students.length;i++)
-		{
-			if(students[i].getFullName()==student.getFullName())
-			{
-				students[i]=null;
-				
-				for( int j=i;j<this.students.length;j++)
-				{
-					students[j]=students[j+1];
-					
-				}
-				students[this.students.length]=null;
-				students[this.students.length+1]=null;
-				return;
-				
-			}
-		}
-	}
-
-	//@Override
-	public void removeToIndex(int index) 
-	{
-		students[index]=null;
-		for( int i=index;i<this.students.length;i++)
-		{
+		for(int i=index;i<this.students.length;i++){
 			students[i]=students[i+1];
 		}
 		students[this.students.length-1]=null;
 	}
 
-	//@Override
-	public void removeToElement(Student student)
-	
-	{
-		for( int i=0;i<this.students.length;i++)
-		{
+	@Override
+	public void remove(Student student) {
+		// Add your implementation here
+			for(int i=0;i<this.students.length;i++){
 			if(students[i].getFullName()==student.getFullName())
 			{
 				students[i]=null;
-				
-				for( int j=i;j<this.students.length;j++)
-				{
+				for(int j=i;j<this.students.length;j++){
 					students[j]=students[j+1];
-					
 				}
 				students[this.students.length]=null;
 				students[this.students.length+1]=null;
 				return;
-				
 			}
 		}
 	}
 
-	//@Override
-	public void bubbleSort() 
-	{
+	@Override
+	public void removeFromIndex(int index) {
+		// Add your implementation here
+	students[index]=null;
+		for(int i=index;i<this.students.length;i++){
+			students[i]=students[i+1];
+		}
+		students[this.students.length-1]=null;
+	}
+
+	@Override
+	public void removeFromElement(Student student) {
+		// Add your implementation here
+for(int i=0;i<this.students.length;i++){
+			if(students[i].getFullName()==student.getFullName())
+			{
+				students[i]=null;
+				for(int j=i;j<this.students.length;j++){
+					students[j]=students[j+1];
+				}
+				students[this.students.length]=null;
+				students[this.students.length+1]=null;
+				return;
+			}
+		}
+	}
+
+	@Override
+	public void removeToIndex(int index) {
+		// Add your implementation here
+		
+
+	}
+
+	@Override
+	public void removeToElement(Student student) {
 		// Add your implementation here
 	}
 
-	//@Override
-	public Student[] getByBirthDate(Date date) 
-	{
-		int i=0,j=0;
-		
-		Student[] stud=null;
-		
-		for( ;i<students.length;i++)
-		{
-			if(students[i].getBirthDate().equals(date))
-			{
-				stud[j++]= students[i];
-			}
-			
-			
-		}	
-		
-		return stud;
+	@Override
+	public void bubbleSort() {
+		// Add your implementation here
 	}
 
-	//@Override
-	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) 
-	{
-		int i=0,j=0;
-		
-		Student[] stud=null;
-		
-		
-		
-		Date date1=null;
-		
-		
-		for( ;i<students.length;i++)
-		{
-			Date s1=students[i].getBirthDate();
-			
-			if(s1.getYear()>firstDate.getYear() && s1.getYear()<lastDate.getYear())
-			{
-				stud[j++]= students[i];
-			}
-			
-			
-		}	
-		
-		return stud;
-	}
-
-	//@Override
-	public Student[] getNearBirthDate(Date date, int days) 
-	
-	{
-		
-		
-		
-		return null;
-	}
-
-	//@Override
-	public int getCurrentAgeByDate(int indexOfStudent) 
-	{
-		Student stu = students[indexOfStudent];
-		LocalDate today = LocalDate.now();
-		Date sdate = stu.getBirthDate();
-		
-		LocalDate birthday = LocalDate.of(sdate.getYear(), sdate.getMonth(), sdate.getDay());
-		Period p = Period.between(birthday, today);
-		return p.getYears();
-	}
-
-	//@Override
-	public Student[] getStudentsByAge(int age) 
-	
-	{
+	@Override
+	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
 		return null;
 	}
 
-	//@Override
-	public Student[] getStudentsWithMaxAvgMark()
-	{
-		
-		
-		
-		
-		
-		
-
-		
+	@Override
+	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
+		// Add your implementation here
 		return null;
 	}
 
-	//@Override
-	public Student getNextStudent(Student student)
-	{
-		
-		int i=0;
-		
-		for(;i<students.length;i++)
-		{
-			if(students[i].getFullName().equals(student.getFullName()) && students[i].getAvgMark()==student.getAvgMark() && students[i].getBirthDate()==student.getBirthDate() && students[i].getId()==student.getId())
-			{
-				return students[i+1];
-			}
-		}	
-		
+	@Override
+	public Student[] getNearBirthDate(Date date, int days) {
+		// Add your implementation here
+		return null;
+	}
+
+	@Override
+	public int getCurrentAgeByDate(int indexOfStudent) {
+		// Add your implementation here
+		return 0;
+	}
+
+	@Override
+	public Student[] getStudentsByAge(int age) {
+		// Add your implementation here
+		return null;
+	}
+
+	@Override
+	public Student[] getStudentsWithMaxAvgMark() {
+		// Add your implementation here
+		return null;
+	}
+
+	@Override
+	public Student getNextStudent(Student student) {
+		// Add your implementation here
 		return null;
 	}
 }
